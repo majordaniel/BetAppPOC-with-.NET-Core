@@ -8,7 +8,6 @@
 
 <div class="row">
     <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
-
         <div class="col-sm-6">
             <h4>Create a new account.</h4>
             <hr />
@@ -43,6 +42,9 @@
                 <input asp-for="Input.PostalCode" class="form-control" />
                 <span asp-validation-for="Input.PostalCode" class="text-danger"></span>
             </div>
+        </div>
+        <div class="col-sm-6">
+          
             <div class="form-group">
                 <label asp-for="Input.Country"></label>
                 <input asp-for="Input.Country" class="form-control" />

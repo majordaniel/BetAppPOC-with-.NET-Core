@@ -15,17 +15,16 @@ namespace IdentityCore.Controllers
     [Authorize(Roles = "OddHandler")]
     public class OddsController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly ApplicationDbContext _db;
 
-        public OddsController(ApplicationDbContext context)
+        public OddsController(ApplicationDbContext db)
         {
-            _context = context;
+            _db = db;
         }
-
         // GET: Odds
         public async Task<IActionResult> Index()
         {
-            return View(await _context.TbOdds.ToListAsync());
+            return View(await _db.TbOdds.ToListAsync());
         }
 
         // GET: Odds/Details/5
@@ -36,7 +35,7 @@ namespace IdentityCore.Controllers
                 return NotFound();
             }
 
-            var tbOdds = await _context.TbOdds
+            var tbOdds = await _db.TbOdds
                 .FirstOrDefaultAsync(m => m.OddId == id);
             if (tbOdds == null)
             {
@@ -61,8 +60,8 @@ namespace IdentityCore.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(tbOdds);
-                await _context.SaveChangesAsync();
+                _db.Add(tbOdds);
+                await _db.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(tbOdds);
@@ -76,7 +75,7 @@ namespace IdentityCore.Controllers
                 return NotFound();
             }
 
-            var tbOdds = await _context.TbOdds.FindAsync(id);
+            var tbOdds = await _db.TbOdds.FindAsync(id);
             if (tbOdds == null)
             {
                 return NotFound();
@@ -98,8 +97,8 @@ namespace IdentityCore.Controllers
             {
                 try
                 {
-                    _context.Update(tbOdds);
-                    await _context.SaveChangesAsync();
+                    _db.Update(tbOdds);
+                    await _db.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -125,7 +124,7 @@ namespace IdentityCore.Controllers
                 return NotFound();
             }
 
-            var tbOdds = await _context.TbOdds
+            var tbOdds = await _db.TbOdds
                 .FirstOrDefaultAsync(m => m.OddId == id);
             if (tbOdds == null)
             {
@@ -140,15 +139,15 @@ namespace IdentityCore.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var tbOdds = await _context.TbOdds.FindAsync(id);
-            _context.TbOdds.Remove(tbOdds);
-            await _context.SaveChangesAsync();
+            var tbOdds = await _db.TbOdds.FindAsync(id);
+            _db.TbOdds.Remove(tbOdds);
+            await _db.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool TbOddsExists(int id)
         {
-            return _context.TbOdds.Any(e => e.OddId == id);
+            return _db.TbOdds.Any(e => e.OddId == id);
         }
     }
 }

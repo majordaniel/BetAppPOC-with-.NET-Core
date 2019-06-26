@@ -9,8 +9,9 @@
 <h4>TbOdds</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
+    <form asp-action="Create">
+
+        <div class="col-sm-6">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="GameName" class="control-label"></label>
@@ -32,43 +33,50 @@
                 <input asp-for="AwayValue" class="form-control" />
                 <span asp-validation-for="AwayValue" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="GameDate" class="control-label"></label>
-                <input asp-for="GameDate" class="form-control" />
-                <span asp-validation-for="GameDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="StakeAmount" class="control-label"></label>
-                <input asp-for="StakeAmount" class="form-control" />
-                <span asp-validation-for="StakeAmount" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="StartTime" class="control-label"></label>
-                <input asp-for="StartTime" class="form-control" />
-                <span asp-validation-for="StartTime" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EndTime" class="control-label"></label>
-                <input asp-for="EndTime" class="form-control" />
-                <span asp-validation-for="EndTime" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="Status" /> @Html.DisplayNameFor(model => model.Status)
-                    </label>
+
+        </div>
+            <div class="col-sm-6">
+
+              
+                <div class="form-group">
+                    <label asp-for="GameDate" class="control-label"></label>
+                    <input asp-for="GameDate" class="form-control" />
+                    <span asp-validation-for="GameDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="StakeAmount" class="control-label"></label>
+                    <input asp-for="StakeAmount" class="form-control" />
+                    <span asp-validation-for="StakeAmount" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="StartTime" class="control-label"></label>
+                    <input asp-for="StartTime" class="form-control" />
+                    <span asp-validation-for="StartTime" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="EndTime" class="control-label"></label>
+                    <input asp-for="EndTime" class="form-control" />
+                    <span asp-validation-for="EndTime" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input asp-for="Status" /> @Html.DisplayNameFor(model => model.Status)
+                        </label>
+                    </div>
+                </div>
+              
+                <div class="form-group">
+                    <label asp-for="OddCreator" class="control-label"></label>
+                    <input asp-for="OddCreator" placeholder=" @User.Identity.Name" value="  @User.Identity.Name" readonly class="form-control" />
+                    <span asp-validation-for="OddCreator" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-default" />
                 </div>
             </div>
-            <div class="form-group">
-                <label asp-for="OddCreator" class="control-label"></label>
-                <input asp-for="OddCreator" class="form-control" />
-                <span asp-validation-for="OddCreator" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </form>
-    </div>
+    </form>
+   
 </div>
 
 <div>
