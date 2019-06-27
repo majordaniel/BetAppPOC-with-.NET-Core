@@ -176,67 +176,65 @@
 
         },
 
-    </script>
-    @*<script>
 
 
-            function myfunction() {
+      function myfunction() {
+
+         
 
 
+                //$('#btnAddStake').click(function () {
+
+                //    IncomingStakeList.push({
+                //        gameName: $('#txtGame').val().trim(),
+                //        homeValue: $('#btnIndHome').val().trim(),
+                //        drawValue: $('#btnIndDraw').val().trim(),
+                //        awayValue: $('#btnIndAway').val().trim(),
+                //        stakeAmt: $('#txtIndStakeAmt').val().trim(),
+                //    })
 
 
-                $('#btnAddStake').click(function () {
-
-                    IncomingStakeList.push({
-                        gameName: $('#txtGame').val().trim(),
-                        homeValue: $('#btnIndHome').val().trim(),
-                        drawValue: $('#btnIndDraw').val().trim(),
-                        awayValue: $('#btnIndAway').val().trim(),
-                        stakeAmt: $('#txtIndStakeAmt').val().trim(),
-                    })
+                //    if (IncomingStakeList.length > 0) {
 
 
-                    if (IncomingStakeList.length > 0) {
-
-
-                        // create a virtual table
-                        var $DescTable = $('<table class="table table-boardered"/>');
-                        //append the descriptions to the virtual table heading
-
-
-
-                        $DescTable.append('<thead><tr><th>Game </th><th> Home Value</th><th>Draw Value </th><th>Away Value </th><th>Stake amount</th></tr></thead>');
-                        // create the virtual table body
-
-                        var $DescTableBody = $('<tbody>');
-
-                        //set the elements of the Virtual table body to be the
-                        //description data/parameter
-                        $.each(IncomingStakeList, function (i, val) {
-
-                            //created a virtual row with the parameters PUSHED above
-                            var $row = $('<tr/>');
-                            $row.append($('<td/>').html(val.gameName));
-                            $row.append($('<td/>').html(val.homeValue));
-                            $row.append($('<td/>').html(val.drawValue));
-                            $row.append($('<td/>').html(val.awayValue));
-                            $row.append($('<td/>').html(val.stakeAmt));
-                            //append the row parameters to the table body
-                            $DescTableBody.append($row);
-
-
-                        });
+                //        // create a virtual table
+                //        var $DescTable = $('<table class="table table-boardered"/>');
+                //        //append the descriptions to the virtual table heading
 
 
 
-                        //append the virtual table body to the virtual table created
-                        $DescTable.append($DescTableBody);
-                        //set the virtual table to the position referenced on the interface for
-                        //positioning
+                //        $DescTable.append('<thead><tr><th>Game </th><th> Home Value</th><th>Draw Value </th><th>Away Value </th><th>Stake amount</th></tr></thead>');
+                //        // create the virtual table body
 
-                        $('#AllMyStakesList').html($DescTable);
-                    }
-                }
+                //        var $DescTableBody = $('<tbody>');
+
+                //        //set the elements of the Virtual table body to be the
+                //        //description data/parameter
+                //        $.each(IncomingStakeList, function (i, val) {
+
+                //            //created a virtual row with the parameters PUSHED above
+                //            var $row = $('<tr/>');
+                //            $row.append($('<td/>').html(val.gameName));
+                //            $row.append($('<td/>').html(val.homeValue));
+                //            $row.append($('<td/>').html(val.drawValue));
+                //            $row.append($('<td/>').html(val.awayValue));
+                //            $row.append($('<td/>').html(val.stakeAmt));
+                //            //append the row parameters to the table body
+                //            $DescTableBody.append($row);
+
+
+                //        });
+
+
+
+                //        //append the virtual table body to the virtual table created
+                //        $DescTable.append($DescTableBody);
+                //        //set the virtual table to the position referenced on the interface for
+                //        //positioning
+
+                //        $('#AllMyStakesList').html($DescTable);
+                //    }
+                //}
           }
 
 
@@ -245,11 +243,15 @@
 
         $(function () {
             $('#example1').DataTable()
-
+           
         })
+        
+
+  
 
 
-    </script>*@
+
+    </script>
 
 
 
