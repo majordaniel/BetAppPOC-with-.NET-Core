@@ -4,12 +4,13 @@
     ViewData["Title"] = "Index";
 }
 
+<link href="../../lib/DataTables-1.10.18/css/dataTables.bootstrap.css" rel="stylesheet" />
 <h2>Index</h2>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table id="example1" class="table table-bordered table-striped">
     <thead>
         <tr>
             <th>
@@ -46,44 +47,46 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.GameName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HomeValue)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DrawValue)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AwayValue)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GameDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StakeAmount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EndTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OddCreator)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.OddId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.OddId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.OddId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GameName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HomeValue)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DrawValue)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AwayValue)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GameDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StakeAmount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OddCreator)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.OddId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.OddId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.OddId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+

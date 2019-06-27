@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-sm-6 form-group">
                 <label>Your Email</label>
-                <input type="text" class="form-control" name="name"placeholder=" @User.Identity.Name" value=" @User.Identity.Name"" readonly id="txtEmail" />
+                <input type="text" class="form-control" name="name" placeholder=" @User.Identity.Name" value=" @User.Identity.Name" readonly id="txtEmail" />
 
             </div>
             <div class="col-sm-6 form-group">
@@ -27,7 +27,7 @@
         </div>
         <div class="row">
             <div class="col-sm-6">
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="example" class="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <th>Game</th>
@@ -47,11 +47,12 @@
             <div class="col-sm-6">
 
                 <div class="row">
-                    <div class="col-sm-6">
-                        <button type="button" class="btn my btn-success">STAKE ALL</button>
+                    <button type="button" class="btn my btn-info">STAKE ALL</button>
+                    <div class="col-sm-6" id="AllMyStakesList">
+
                         <table id="example2" class="table table-bordered table-striped">
                             <thead>
-                                @*<tr>All My Stakes</tr>*@
+                                <tr>All My Stakes</tr>
                                 <tr>
                                     <th>Game</th>
                                     <th>Home Value</th>
@@ -64,20 +65,50 @@
                             </thead>
                             <tbody id="SetOddList">
                                 <tr>
-                                        <td><div>ArsenalVSChelsea</div></td>
+                                    <td><div>ArsenalVSChelsea</div></td>
 
-                                        <td>   <button type="button" id="mybtn" class="btn my btn-primary">1</button></td>
-                                        <td>    <button type="button" class="btn my btn-primary">x</button></td>
-                                        <td>   <button type="button" class="btn my btn-primary">2</button><a href="#" onclick="alert('Hey You')">content</a></td>
+                                    <td>   <button type="button" id="mybtn" class="btn my btn-primary">1</button></td>
+                                    <td>    <button type="button" class="btn my btn-primary">x</button></td>
+                                    <td>   <button type="button" class="btn my btn-primary">2</button>@*<a href="#" onclick="alert('Hey You')">content</a>*@</td>
 
-                                        <td>
-                                            <input type="text" name="name" value="" placeholder="Stake Amount" />
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn my btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i></button>
+                                    <td>
+                                        <input type="text" name="name" value="" placeholder="Stake Amount" />
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn my btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i></button>
 
-                                        </td>
-                                    </tr>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><div>BarceVSDortMond</div></td>
+
+                                    <td>   <button type="button" id="mybtn" class="btn my btn-primary">1</button></td>
+                                    <td>    <button type="button" class="btn my btn-primary">x</button></td>
+                                    <td>   <button type="button" class="btn my btn-primary">2</button>@*<a href="#" onclick="alert('Hey You')">content</a>*@</td>
+
+                                    <td>
+                                        <input type="text" name="name" value="" placeholder="Stake Amount" />
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn my btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i></button>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><div>ManCityVSBayern</div></td>
+
+                                    <td>   <button type="button" id="mybtn" class="btn my btn-primary">1</button></td>
+                                    <td>    <button type="button" class="btn my btn-primary">x</button></td>
+                                    <td>   <button type="button" class="btn my btn-primary">2</button>@*<a href="#" onclick="alert('Hey You')">content</a>*@</td>
+
+                                    <td>
+                                        <input type="text" name="name" value="" placeholder="Stake Amount" />
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn my btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i></button>
+
+                                    </td>
+                                </tr>
 
                             </tbody>
 
@@ -93,7 +124,9 @@
     <!-- /.box-body -->
 </div>
 
-@section Scripts{
+@section Scripts {
+
+
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/DataTables-1.10.18/js/jquery.dataTables.js"></script>
 
@@ -103,54 +136,141 @@
             $(this).toggleClass('btn-success');
             // alert($(this).attr('class'));
             if ($(this).attr('class') == 'btn my btn-primary btn-success') {
-                alert("success");
+                alert("added");
             }
             else {
-                alert("primary");
+                alert("removed");
             }
         });
 
 
-        $(document).ready(function () {
+        $(document).ready(function funct () {
             $.get("/Punter/GetOddsList", null, DataBind);
             function DataBind(OddsList) {
                 var SetData = $("#SetOddList");
 
                 for (var i = 0; i < OddsList.length; i++) {
                     var Data = "<tr class='row_" + OddsList[i].oddID + "'>" +
-                        "<td>" + OddsList[i].gameName + "</td>" +
+                       //"<td>" + OddsList[i].gameName + "</td>" +
+                        "<td> " + "<input type = 'text' name = 'name' readonly id = 'txtGame' value ='"+ OddsList[i].gameName +"' placeholder = 'Stake Amount'/>" + "<br/>" +
+                        //"<td>" + "<a href='#' id='btnIndAway'" + "class='btn my btn-primary' onClick = 'alert('Ok')'>" + OddsList[i].gameName + "</a>" + "</td>" +
+
                         "<td>" + "<a href='#' id='btnIndHome'" + "class='btn my btn-primary'>" + OddsList[i].homeValue + "</a>" + "</td>" +
                         // "<td>" + "<a href='#' id='btnIndDraw'" + "style='color: red;'" + OddsList[i].drawValue + "</a>" + "</td>" +
                         "<td>" + "<a href='#' id='btnIndDraw'" + "class='btn my btn-primary'>" + OddsList[i].drawValue + "</a>" + "</td>" +
                         "<td>" + "<a href='#' id='btnIndAway'" + "class='btn my btn-primary' onClick = 'alert('Ok')'>" + OddsList[i].awayValue + "</a>" + "</td>" +
 
-                         "<td> " + "<input type = 'text' name = 'name' id = 'txtIndStakeAmt' placeholder = 'Stake Amount'/>" + "<br/>" +
-                        "<a href='#' id='btnIndStake'  onclick='alert('Hey You') class='btn btn-success btn-sm'>Stake</a>" +
+                        "<td> " + "<input type = 'text' name = 'name' id = 'txtIndStakeAmt' placeholder = 'Stake Amount'/>" + "<br/>" +
+                      "<a href='#' id='btnIndStake'  onclick='alert('Hey Ok') class='btn btn-success btn-sm'>Stake</a>" +
+                        //"<input type='button' id='btnAddStake' class='form-control btn btn-info btn-sm' value='Stake' />" +
+
                         "</td>" + "</tr>";
                     SetData.append(Data);
 
                 }
             }
-            
-        });
+
+
+                   var IncomingStakeList = [];
+
+
+        },
+
+    </script>
+    @*<script>
+
+
+            function myfunction() {
+
+
+
+
+                $('#btnAddStake').click(function () {
+
+                    IncomingStakeList.push({
+                        gameName: $('#txtGame').val().trim(),
+                        homeValue: $('#btnIndHome').val().trim(),
+                        drawValue: $('#btnIndDraw').val().trim(),
+                        awayValue: $('#btnIndAway').val().trim(),
+                        stakeAmt: $('#txtIndStakeAmt').val().trim(),
+                    })
+
+
+                    if (IncomingStakeList.length > 0) {
+
+
+                        // create a virtual table
+                        var $DescTable = $('<table class="table table-boardered"/>');
+                        //append the descriptions to the virtual table heading
+
+
+
+                        $DescTable.append('<thead><tr><th>Game </th><th> Home Value</th><th>Draw Value </th><th>Away Value </th><th>Stake amount</th></tr></thead>');
+                        // create the virtual table body
+
+                        var $DescTableBody = $('<tbody>');
+
+                        //set the elements of the Virtual table body to be the
+                        //description data/parameter
+                        $.each(IncomingStakeList, function (i, val) {
+
+                            //created a virtual row with the parameters PUSHED above
+                            var $row = $('<tr/>');
+                            $row.append($('<td/>').html(val.gameName));
+                            $row.append($('<td/>').html(val.homeValue));
+                            $row.append($('<td/>').html(val.drawValue));
+                            $row.append($('<td/>').html(val.awayValue));
+                            $row.append($('<td/>').html(val.stakeAmt));
+                            //append the row parameters to the table body
+                            $DescTableBody.append($row);
+
+
+                        });
+
+
+
+                        //append the virtual table body to the virtual table created
+                        $DescTable.append($DescTableBody);
+                        //set the virtual table to the position referenced on the interface for
+                        //positioning
+
+                        $('#AllMyStakesList').html($DescTable);
+                    }
+                }
+          }
+
+
+        );
 
 
         $(function () {
             $('#example1').DataTable()
-            //$('#example2').DataTable({
-            //    'paging': true,
-            //    'lengthChange': false,
-            //    'searching': false,
-            //    'ordering': true,
-            //    'info': true,
-            //    'autoWidth': false
-            //})
+
         })
 
-        //To populate the table with customers details
-        // $("#LoadingStatus").html("Loading...");
 
-        //debugger
+    </script>*@
 
-    </script>
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        }
